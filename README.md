@@ -35,7 +35,7 @@
 Ensure Golang is installed on your system before installing `ws1cli`.
 
 ```bash
-git clone https://github.com/christopherime/WS1CLI.git
+git clone https://github.com/geekxflood/WS1CLI.git
 cd ws1cli
 go build -ldflags="-X 'geekxflood/ws1cli/internal/version.Version=$(cat VERSION)'" -o ws1cli
 ```
