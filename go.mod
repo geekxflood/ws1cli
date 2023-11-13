@@ -1,4 +1,4 @@
-module christopherime/ws1cli
+module geekxflood/ws1cli
 
 go 1.21
 
