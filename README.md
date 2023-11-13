@@ -69,6 +69,12 @@ To verify API configuration and connectivity:
 ws1cli test
 ```
 
+| Flag | Description |
+| --- | --- |
+| `-d` `--show-details` | **INSECURE** Display the URL and headers for the test API call |
+
+The `-d`or `--show-details` flag is mentionned as **INSECURE** because it will display your API credentials in plain text.
+
 ### Devices
 
 To interact with device API:

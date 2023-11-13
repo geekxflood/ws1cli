@@ -38,5 +38,3 @@ func (ct *CustomTime) MarshalJSON() ([]byte, error) {
 	}
 	return []byte(fmt.Sprintf("\"%s\"", ct.Time.Format("2006-01-02T15:04:05.000"))), nil
 }
-
-// Then you use CustomTime in place of time.Time in your DeviceDefinition struct.
