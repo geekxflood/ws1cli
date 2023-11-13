@@ -1,12 +1,16 @@
-# ws1-cli
+# WS1CLI
 
-`ws1-cli` is a command-line interface (CLI) tool built in Go and leveraging the Cobra library, designed for interacting with VMware Workspace ONE UEM API. It enables administrators to manage and automate tasks within the Workspace ONE platform efficiently.
+`ws1cli` is a command-line interface (CLI) tool built in Go and leveraging the Cobra library, designed for interacting with VMware Workspace ONE UEM API. It enables administrators to manage and automate tasks within the Workspace ONE platform efficiently.
 
 ## Features
 
 - Simplified Command Set: Easy-to-use commands for common administration tasks.
 - Secure Configuration: Securely stores API credentials using advanced encryption.
 - Go and Cobra: Built with Go for reliability and Cobra for a powerful command line interface.
+- Commands implemented:
+  - Test: Verify configuration and connectivity to the API.
+  - Devices: Interact with device API.
+    - Inventory: Output an array of JSON of devices in LGID.
 
 ## TODO
 
@@ -17,7 +21,7 @@
 
 ## Environement Variables
 
-`ws1-cli` need the following environment variables:
+`ws1cli` need the following environment variables:
 
 | Variable | Description |
 | --- | --- |
@@ -25,58 +29,58 @@
 
 ## Installation
 
-Ensure Golang is installed on your system before installing `ws1-cli`.
+Ensure Golang is installed on your system before installing `ws1cli`.
 
 ```bash
-git clone https://github.com/christopherime/ws1-cli.git
-cd ws1-cli
+git clone https://github.com/christopherime/WS1CLI.git
+cd ws1cli
 go build
 ```
 
-Add `ws1-cli` to your system's PATH to use it from any directory.
+Add `ws1cli` to your system's PATH to use it from any directory.
 
 ## Configuration
 
 Initialize your configuration with the `init` command:
 
 ```bash
-ws1-cli init
+ws1cli init
 ```
 
 You'll be prompted to enter your API URL, username, and password.
 
-## Usage
+## Commands
 
 Here's how to get started with some basic commands:
 
-### Global flags
+- **Global flags**
 
 | Flag | Description |
 | --- | --- |
-| `-h` `--help` | Help for ws1-cli |
+| `-h` `--help` | Help info |
 | `-i` `--insecure` | Ignore TLS verification |
 | `-p` `--pretty` | Pretty-print JSON output |
+
+### Test
+
+To verify API configuration and connectivity:
+
+```bash
+ws1cli test
+```
 
 ### Devices
 
 To interact with device API:
 
 ```bash
-ws1-cli device
+ws1cli device
 ```
 
 | Flag | Description |
 | --- | --- |
 | `-d` `--inventory` | Output an array of JSON of devices in LGID |
 | `-l` `--lgid` | LGID of device, mandatory when using `-d` flag |
-
-### Test Configuration
-
-To verify API configuration and connectivity:
-
-```bash
-ws1-cli test
-```
 
 ## Contributing
 

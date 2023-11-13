@@ -1,4 +1,4 @@
-module christopherime/ws1-cli
+module christopherime/ws1cli
 
 go 1.21
 

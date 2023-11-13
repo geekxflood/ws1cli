@@ -21,7 +21,7 @@ THE SOFTWARE.
 */
 package main
 
-import "christopherime/ws1-cli/cmd"
+import "christopherime/ws1cli/cmd"
 
 func main() {
 	cmd.Execute()
