@@ -54,7 +54,8 @@ Here's how to get started with some basic commands:
 | Flag | Description |
 | --- | --- |
 | `-h` `--help` | Help for ws1-cli |
-| `-i` `--insecure` | Skip TLS certificate verification |
+| `-i` `--insecure` | Ignore TLS verification |
+| `-p` `--pretty` | Pretty-print JSON output |
 
 ### Devices
 

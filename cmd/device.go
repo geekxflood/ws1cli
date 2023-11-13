@@ -9,7 +9,7 @@ import (
 )
 
 var inventory bool
-var lgid int // Assuming LGID is an integer
+var lgid int
 
 // deviceCmd represents the device command
 var deviceCmd = &cobra.Command{

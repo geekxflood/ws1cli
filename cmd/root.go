@@ -9,6 +9,7 @@ import (
 )
 
 var insecure bool // global variable to store the flag value
+var prettyPrint bool
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -31,4 +32,6 @@ func init() {
 
 	// Persistent flag available to all subcommands
 	rootCmd.PersistentFlags().BoolVarP(&insecure, "insecure", "i", false, "Ignore TLS verification")
+	rootCmd.PersistentFlags().BoolVarP(&prettyPrint, "pretty", "p", false, "Pretty-print JSON output")
+
 }

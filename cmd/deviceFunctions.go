@@ -11,6 +11,7 @@ import (
 
 // GetDeviceInventory retrieves the inventory of devices based on the provided LGID.
 func GetDeviceInventory(lgid int) error {
+	var jsonData []byte
 	config, err := GetConfig()
 	if err != nil {
 		return err
@@ -24,6 +25,7 @@ func GetDeviceInventory(lgid int) error {
 	page := 0
 
 	for {
+
 		apiEndpoint := fmt.Sprintf("%s/API/mdm/devices/search?lgid=%d&page=%d", config.APIURL, lgid, page)
 
 		req, err := http.NewRequest("GET", apiEndpoint, nil)
@@ -63,12 +65,18 @@ func GetDeviceInventory(lgid int) error {
 		page++ // Go to the next page
 	}
 
-	// Convert all devices to JSON for a pretty print
-	allDevicesJSON, err := json.MarshalIndent(allDevices, "", "  ")
+	// Print all devices
+	if prettyPrint {
+		jsonData, err = json.MarshalIndent(allDevices, "", "    ")
+	} else {
+		jsonData, err = json.Marshal(allDevices)
+	}
+
 	if err != nil {
 		return fmt.Errorf("error marshalling devices: %v", err)
 	}
-	fmt.Println(string(allDevicesJSON))
+
+	fmt.Println(string(jsonData))
 
 	return nil
 }
