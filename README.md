@@ -25,7 +25,7 @@
 
 | Variable | Description |
 | --- | --- |
-| `WS1_KEY` | Encryption key |
+| `WS1_KEY` | Encryption passphrase |
 
 ## Installation
 
