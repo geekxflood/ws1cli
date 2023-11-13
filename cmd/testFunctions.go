@@ -53,6 +53,6 @@ func TestWS1() error {
 	}
 
 	// Optionally, you could unmarshal and print the response body for user feedback
-	fmt.Println("Workspace ONE UEM API is responsive and healthy.")
+	fmt.Println("Workspace ONE UEM API is responsive.")
 	return nil
 }

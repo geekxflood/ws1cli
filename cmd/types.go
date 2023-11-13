@@ -132,3 +132,62 @@ type DeviceDefinition struct {
 	} `json:"Id"`
 	UUID string `json:"Uuid"`
 }
+
+type ProductSearchResult struct {
+	Products []ProductDefinition `json:"Products"`
+	Page     int                 `json:"Page"`
+	PageSize int                 `json:"PageSize"`
+	Total    int                 `json:"Total"`
+}
+
+type ProductDefinition struct {
+	ID struct {
+		Value int `json:"Value"`
+	} `json:"ID"`
+	PlatformID                     int    `json:"PlatformID"`
+	Name                           string `json:"Name"`
+	ManagedByOrganizationGroupID   string `json:"ManagedByOrganizationGroupID"`
+	Description                    string `json:"Description"`
+	ManagedByOrganizationGroupName string `json:"ManagedByOrganizationGroupName"`
+	Active                         bool   `json:"Active"`
+	Platform                       string `json:"Platform"`
+	SmartGroups                    []struct {
+		SmartGroupID int    `json:"SmartGroupId"`
+		Name         string `json:"Name"`
+	} `json:"SmartGroups"`
+	Manifest struct {
+		Action []struct {
+			ActionTypeID                 int    `json:"ActionTypeID"`
+			ItemID                       int    `json:"ItemID"`
+			Persist                      bool   `json:"Persist"`
+			AppTunneling                 bool   `json:"AppTunneling"`
+			AndroidLegacyVpnProfileUUID  string `json:"AndroidLegacyVpnProfileUuid"`
+			AndroidForWorkVpnProfileUUID string `json:"AndroidForWorkVpnProfileUuid"`
+		} `json:"Action"`
+	} `json:"Manifest"`
+	Conditions []struct {
+		ConditionID         string `json:"ConditionId"`
+		ConditionName       string `json:"ConditionName"`
+		ConditionType       string `json:"ConditionType"`
+		OrganizationGroupID string `json:"OrganizationGroupId"`
+	} `json:"Conditions"`
+	TotalAssigned                int    `json:"TotalAssigned"`
+	Compliant                    int    `json:"Compliant"`
+	InProgress                   int    `json:"InProgress"`
+	Failed                       int    `json:"Failed"`
+	RuleLogic                    string `json:"RuleLogic"`
+	ActivationDateTime           string `json:"ActivationDateTime"`
+	DeactivationDateTime         string `json:"DeactivationDateTime"`
+	PauseResume                  bool   `json:"PauseResume"`
+	DeploymentMode               int    `json:"DeploymentMode"`
+	DevicePolicyTypeID           int    `json:"DevicePolicyTypeID"`
+	DevicePolicyType             string `json:"DevicePolicyType"`
+	ActivationOrDeactivationType string `json:"ActivationOrDeactivationType"`
+	ComplianceOverrideRule       string `json:"ComplianceOverrideRule"`
+	AutoRetry                    bool   `json:"AutoRetry"`
+	DeviceReprocess              bool   `json:"DeviceReprocess"`
+	DevicePolicyUUID             string `json:"DevicePolicyUuid"`
+	IsExpedited                  bool   `json:"IsExpedited"`
+	Version                      int    `json:"Version"`
+	ProductETag                  string `json:"ProductETag"`
+}

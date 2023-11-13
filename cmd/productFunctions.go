@@ -1,4 +1,4 @@
-// cmd/deviceFunctions.go
+// cmd/productFunctions.go
 
 package cmd
 
@@ -9,24 +9,23 @@ import (
 	"net/http"
 )
 
-// GetDeviceInventory retrieves the inventory of devices based on the provided LGID.
-func GetDeviceInventory(lgid int) error {
+// GetProductInventory retrieves the inventory of products
+func GetProductInventory() error {
 	var jsonData []byte
 	config, err := GetConfig()
 	if err != nil {
 		return err
 	}
-
 	httpClient := CreateHTTPClient()
 
 	const pageSize = 500
-	var allDevices []DeviceDefinition
-	var totalDevices int
+
+	var allProducts []ProductDefinition
+	var totalProducts int
 	page := 0
 
 	for {
-
-		apiEndpoint := fmt.Sprintf("%s%s/mdm/devices/search?lgid=%d&page=%d", config.APIURL, config.APIPath, lgid, page)
+		apiEndpoint := fmt.Sprintf("%s%s/mdm/products/search?lgid=%d", config.APIURL, config.APIPath, lgid)
 
 		req, err := http.NewRequest("GET", apiEndpoint, nil)
 		if err != nil {
@@ -48,28 +47,27 @@ func GetDeviceInventory(lgid int) error {
 			return fmt.Errorf("API call failed with status code %d and body %s", resp.StatusCode, string(bodyBytes))
 		}
 
-		var searchResult DeviceSearchResult
+		var searchResult ProductSearchResult
 		bodyBytes, _ := io.ReadAll(resp.Body)
 
 		if err := json.Unmarshal(bodyBytes, &searchResult); err != nil {
 			return fmt.Errorf("error unmarshalling response: %v", err)
 		}
 
-		allDevices = append(allDevices, searchResult.Devices...)
-		totalDevices = searchResult.Total
+		allProducts = append(allProducts, searchResult.Products...)
+		totalProducts = searchResult.Total
 
 		// Break if the last page is reached
-		if (page+1)*pageSize >= totalDevices {
+		if (page+1)*pageSize >= totalProducts {
 			break
 		}
 		page++ // Go to the next page
 	}
-
-	// Print all devices
+	// Print all products
 	if prettyPrint {
-		jsonData, err = json.MarshalIndent(allDevices, "", "    ")
+		jsonData, err = json.MarshalIndent(allProducts, "", "    ")
 	} else {
-		jsonData, err = json.Marshal(allDevices)
+		jsonData, err = json.Marshal(allProducts)
 	}
 
 	if err != nil {

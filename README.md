@@ -8,9 +8,12 @@
 - Secure Configuration: Securely stores API credentials using advanced encryption.
 - Go and Cobra: Built with Go for reliability and Cobra for a powerful command line interface.
 - Commands implemented:
+  - `version`: Display the version of `ws1cli`.
   - `test`: Verify configuration and connectivity to the API.
   - `device`: Interact with device API.
-    - `-d` or `--inventory`: Output an array of JSON of devices in LGID (`-l`, `--lgid` mandatory with it).
+    - `-d` or `--inventory`: Output an array of JSON of devices in LGID (`-l`, `--lgid` *mandatory* with it).
+  - `product`: Interact with product provisionning API
+    - `-l` or `--lgid`: **mandatory** LGID of products
 
 ## TODO
 
@@ -94,6 +97,18 @@ ws1cli device
 | Flag | Description |
 | --- | --- |
 | `-d` `--inventory` | Output an array of JSON of devices in LGID |
+| `-l` `--lgid` | LGID of device, mandatory when using `-d` flag |
+
+### Products
+
+To interact with product provisionning API:
+
+```bash
+ws1cli product
+```
+
+| Flag | Description |
+| --- | --- |
 | `-l` `--lgid` | LGID of device, mandatory when using `-d` flag |
 
 ## Tips
