@@ -8,9 +8,9 @@
 - Secure Configuration: Securely stores API credentials using advanced encryption.
 - Go and Cobra: Built with Go for reliability and Cobra for a powerful command line interface.
 - Commands implemented:
-  - Test: Verify configuration and connectivity to the API.
-  - Devices: Interact with device API.
-    - Inventory: Output an array of JSON of devices in LGID.
+  - `test`: Verify configuration and connectivity to the API.
+  - `device`: Interact with device API.
+    - `-d` or `--inventory`: Output an array of JSON of devices in LGID (`-l`, `--lgid` mandatory with it).
 
 ## TODO
 
