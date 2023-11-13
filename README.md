@@ -61,6 +61,14 @@ Here's how to get started with some basic commands:
 | `-i` `--insecure` | Ignore TLS verification |
 | `-p` `--pretty` | Pretty-print JSON output |
 
+### Version
+
+Display the version of `ws1cli`:
+
+```bash
+ws1cli version
+```
+
 ### Test
 
 To verify API configuration and connectivity:
