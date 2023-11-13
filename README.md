@@ -49,13 +49,25 @@ You'll be prompted to enter your API URL, username, and password.
 
 Here's how to get started with some basic commands:
 
-### Get Devices
+### Global flags
 
-To fetch a list of devices:
+| Flag | Description |
+| --- | --- |
+| `-h` `--help` | Help for ws1-cli |
+| `-i` `--insecure` | Skip TLS certificate verification |
+
+### Devices
+
+To interact with device API:
 
 ```bash
-ws1-cli getDevices
+ws1-cli device
 ```
+
+| Flag | Description |
+| --- | --- |
+| `-d` `--inventory` | Output an array of JSON of devices in LGID |
+| `-l` `--lgid` | LGID of device, mandatory when using `-d` flag |
 
 ### Test Configuration
 
