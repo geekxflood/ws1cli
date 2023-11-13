@@ -27,6 +27,14 @@
 - Compliance and Reporting: Tools for conducting and reporting compliance checks.
 - Event Log Monitoring: Capabilities to monitor and extract event logs.
 
+## Environement Variables
+
+`ws1-cli` need the following environment variables:
+
+| Variable | Description |
+| --- | --- |
+| `WS1_KEY` | Encryption key |
+
 ## Installation
 
 Ensure Golang is installed on your system before installing `ws1-cli`.
@@ -80,8 +88,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Support
 
 For support, please open an issue in the GitHub repository issue tracker.
-
-## Author
-
-- Christophe Rime - [christopherime@me.com](mailto:christopherime@me.com)
-
