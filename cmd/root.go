@@ -13,7 +13,7 @@ var prettyPrint bool
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "ws1-cli",
+	Use:   "ws1cli",
 	Short: "CLI to interact with VMware Workspace ONE UEM API",
 	Long:  `Command line interface to interact with VMware Workspace ONE UEM API.`,
 }

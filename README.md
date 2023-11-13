@@ -82,6 +82,16 @@ ws1cli device
 | `-d` `--inventory` | Output an array of JSON of devices in LGID |
 | `-l` `--lgid` | LGID of device, mandatory when using `-d` flag |
 
+## Tips
+
+JSON output can be parse using `jq`:
+
+Find the number of devices in LGID:
+
+```bash
+./ws1cli device --inventory -l $LGID | jq 'length'
+```
+
 ## Contributing
 
 Contributions are welcome. Fork the project, make your updates, and submit a pull request.

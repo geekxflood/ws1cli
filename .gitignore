@@ -23,3 +23,6 @@ go.work
 .vscode
 .idea
 .env
+
+ws1cli
+ws1cli.exe
