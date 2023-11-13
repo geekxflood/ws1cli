@@ -2,6 +2,10 @@
 
 `ws1cli` is a command-line interface (CLI) tool built in Go and leveraging the Cobra library, designed for interacting with VMware Workspace ONE UEM API. It enables administrators to manage and automate tasks within the Workspace ONE platform efficiently.
 
+To keep the project simple, each command will be related to 1 API call. We will try to keep that way so that it's easy to maintain and to add new commands. If you need to chain command, you will parse the output of the first command and use it as input for the second command.
+
+Each output will be in JSON format. You can use `jq` to parse the output.
+
 ## Features
 
 - Simplified Command Set: Easy-to-use commands for common administration tasks.
@@ -17,9 +21,22 @@
 
 ## TODO
 
+- [ ] Device Management: Perform devices operations.
+  - [x] Get a list of devices.
+  - [ ] Send a message to a device.
+  - [ ] Lock a device.
+  - [ ] Unlock a device.
+  - [ ] Reboot a device (will depend if the OS allows it).
+  - [ ] Wipe a device.
 - [ ] Product List Interaction: Manage and list products within your Workspace ONE environment.
-- [ ] Fetch Tag List: Retrieve a list of tags associated with devices or users.
-- [ ] Device Management: Perform operations such as device lock, wipe, and query information.
+  - [x] Get a list of products.
+  - [ ] Start or stop a product.
+  - [ ] List devices assigned to a product and their status (will requiered several API call).
+- [ ] Test command will need to output in JSON format.
+- [ ] Fetch Tag.
+  - [ ] Get a list of devices per tag.
+  - [ ] Create a tag.
+  - [ ] Delete a tag.
 - [ ] Comprehensive Reporting: Generate reports on user access, device compliance, and application usage.
 
 ## Environement Variables
