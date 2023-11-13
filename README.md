@@ -8,24 +8,12 @@
 - Secure Configuration: Securely stores API credentials using advanced encryption.
 - Go and Cobra: Built with Go for reliability and Cobra for a powerful command line interface.
 
-## Planned Features
-
-- Product List Interaction: Manage and list products within your Workspace ONE environment.
-- Fetch Tag List: Retrieve a list of tags associated with devices or users.
-- Device Management: Perform operations such as device lock, wipe, and query information.
-- Automated Actions: Schedule and automate routine tasks for device and application management.
-- Comprehensive Reporting: Generate reports on user access, device compliance, and application usage.
-
 ## TODO
 
-- Integrate More API Endpoints: Expand command functionality to cover all aspects of the API provided by Workspace ONE.
-- Interactive CLI Wizard: Create an interactive CLI wizard for complex workflows.
-- Enhanced Security Features: Additional security checks and configuration validation.
-- Custom Report Building: Tools for building custom reports via the CLI.
-- Scripting and Automation: Guides and templates for common scripting and automation use cases.
-- Bulk Operations: Efficient methods for bulk updates or deletions.
-- Compliance and Reporting: Tools for conducting and reporting compliance checks.
-- Event Log Monitoring: Capabilities to monitor and extract event logs.
+- [ ] Product List Interaction: Manage and list products within your Workspace ONE environment.
+- [ ] Fetch Tag List: Retrieve a list of tags associated with devices or users.
+- [ ] Device Management: Perform operations such as device lock, wipe, and query information.
+- [ ] Comprehensive Reporting: Generate reports on user access, device compliance, and application usage.
 
 ## Environement Variables
 
