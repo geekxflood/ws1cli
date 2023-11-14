@@ -6,6 +6,25 @@ To keep the project simple, each command will be related to 1 API call. We will 
 
 Each output will be in JSON format. You can use `jq` to parse the output.
 
+## Table of Contents
+
+- [WS1CLI](#ws1cli)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [TODO](#todo)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
+  - [Environement Variables](#environement-variables)
+  - [Commands](#commands)
+    - [Version](#version)
+    - [Test](#test)
+    - [Devices](#devices)
+    - [Products](#products)
+  - [Tips](#tips)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Support](#support)
+
 ## Features
 
 - Simplified Command Set: Easy-to-use commands for common administration tasks.
@@ -42,14 +61,6 @@ Each output will be in JSON format. You can use `jq` to parse the output.
   - [ ] Delete a tag.
 - [ ] Comprehensive Reporting: Generate reports on user access, device compliance, and application usage.
 
-## Environement Variables
-
-`ws1cli` need the following environment variables:
-
-| Variable | Description |
-| --- | --- |
-| `WS1_KEY` | Encryption passphrase |
-
 ## Installation
 
 Ensure Golang is installed on your system before installing `ws1cli`.
@@ -71,6 +82,19 @@ ws1cli init
 ```
 
 You'll be prompted to enter your API URL, username, and password.
+This will create a `~/.ws1cli` file in your home directory with your encrypted API credentials.
+Your credentials and `aw-tenant-code` will be encrypted using AES-256-GCM with a passphrase you provide as an environment variable (see below).
+
+## Environement Variables
+
+`ws1cli` need the following environment variables:
+
+| Variable | Description |
+| --- | --- |
+| `WS1_KEY` | Encryption passphrase |
+
+This passphrase is used to encrypt your API credentials, the longer the better.
+If you lost it, you will need to delete the `~/.ws1cli` file and reconfigure with `ws1cli init`.
 
 ## Commands
 
