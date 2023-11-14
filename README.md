@@ -23,6 +23,7 @@ Each output will be in JSON format. You can use `jq` to parse the output.
 
 - [ ] Device Management: Perform devices operations.
   - [x] Get a list of devices.
+  - [ ] Search a specific device.
   - [ ] Send command to a device.
   - [ ] Send a message to a device.
   - [ ] Lock a device.
