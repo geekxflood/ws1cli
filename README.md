@@ -32,6 +32,7 @@ Each output will be in JSON format. You can use `jq` to parse the output.
 - [ ] Product List Interaction: Manage and list products within your Workspace ONE environment.
   - [x] Get a list of products.
   - [x] Start or stop a product.
+  - [ ] Force Reprocess a product.
   - [ ] List devices assigned to a product and their status (will requiered several API call).
 - [ ] Test command will need to output in JSON format.
 - [ ] Fetch Tag.
