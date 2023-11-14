@@ -8,8 +8,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var showDetails bool
-
 // testCmd represents the test command
 var testCmd = &cobra.Command{
 	Use:   "test",

@@ -8,8 +8,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var inventory bool
-var lgid int
 
 // deviceCmd represents the device command
 var deviceCmd = &cobra.Command{

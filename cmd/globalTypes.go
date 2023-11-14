@@ -11,6 +11,17 @@ type Config struct {
 	DecryptedAPISecret string `yaml:"-"`
 }
 
+type ProductErrorResponse struct {
+	ErrorCode  int    `json:"errorCode"`
+	Message    string `json:"message"`
+	ActivityID string `json:"activityId"`
+	Links      []struct {
+		Rel   string `json:"Rel"`
+		Href  string `json:"Href"`
+		Title string `json:"Title"`
+	} `json:"links"`
+}
+
 type DeviceSearchResult struct {
 	Devices  []DeviceDefinition `json:"devices"`
 	Page     int                `json:"page"`

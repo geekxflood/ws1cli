@@ -9,7 +9,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var forceRecreate bool
 
 // initCmd represents the init command
 var initCmd = &cobra.Command{

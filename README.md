@@ -23,6 +23,7 @@ Each output will be in JSON format. You can use `jq` to parse the output.
 
 - [ ] Device Management: Perform devices operations.
   - [x] Get a list of devices.
+  - [ ] Send command to a device.
   - [ ] Send a message to a device.
   - [ ] Lock a device.
   - [ ] Unlock a device.
@@ -30,7 +31,7 @@ Each output will be in JSON format. You can use `jq` to parse the output.
   - [ ] Wipe a device.
 - [ ] Product List Interaction: Manage and list products within your Workspace ONE environment.
   - [x] Get a list of products.
-  - [ ] Start or stop a product.
+  - [x] Start or stop a product.
   - [ ] List devices assigned to a product and their status (will requiered several API call).
 - [ ] Test command will need to output in JSON format.
 - [ ] Fetch Tag.
@@ -97,9 +98,9 @@ To verify API configuration and connectivity:
 ws1cli test
 ```
 
-| Flag | Description |
-| --- | --- |
-| `-d` `--show-details` | **INSECURE** Display the URL and headers for the test API call |
+| Flag | type |Description |
+| --- | --- | --- |
+| `-d` `--show-details` | `N/A` | **INSECURE** Display the URL and headers for the test API call |
 
 The `-d`or `--show-details` flag is mentionned as **INSECURE** because it will display your API credentials in plain text.
 
@@ -111,10 +112,10 @@ To interact with device API:
 ws1cli device
 ```
 
-| Flag | Description |
-| --- | --- |
-| `-d` `--inventory` | Output an array of JSON of devices in LGID |
-| `-l` `--lgid` | LGID of device, mandatory when using `-d` flag |
+| Flag | type |Description |
+| --- | --- | --- |
+| `-d` `--inventory` | `N/A` | Output an array of JSON of devices in LGID |
+| `-l` `--lgid` | `int` | LGID of device, mandatory when using `-d` flag |
 
 ### Products
 
@@ -124,9 +125,11 @@ To interact with product provisionning API:
 ws1cli product
 ```
 
-| Flag | Description |
-| --- | --- |
-| `-l` `--lgid` | LGID of device, mandatory when using `-d` flag |
+| Flag | type |Description |
+| --- | --- | --- |
+| `-l` `--lgid` | `int` |LGID of device, mandatory when using `-d` flag |
+| `-s` `--start-stop` | `bool` | Start (true/1) or stop (false/0) a product |
+| `-p` `--product-id` | `int` | Product ID for starting or stopping a product |
 
 ## Tips
 

@@ -4,6 +4,7 @@ package cmd
 import (
 	"crypto/tls"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 
@@ -23,6 +24,24 @@ func CreateHTTPClient() *http.Client {
 	}
 
 	return httpClient
+}
+
+// HttpCaller makes an HTTP call to the specified API endpoint
+func HttpCaller(req *http.Request) (*http.Response, error) {
+	httpClient := CreateHTTPClient()
+
+	resp, err := httpClient.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		bodyBytes, _ := io.ReadAll(resp.Body)
+		return nil, fmt.Errorf("API call failed with status code %d and body %s", resp.StatusCode, string(bodyBytes))
+	}
+
+	return resp, nil
 }
 
 // GetConfig retrieves and decrypts the configuration from the config file
