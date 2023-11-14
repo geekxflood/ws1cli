@@ -20,6 +20,7 @@ Each output will be in JSON format. You can use `jq` to parse the output.
     - [Test](#test)
     - [Devices](#devices)
     - [Products](#products)
+    - [Remote](#remote)
   - [Tips](#tips)
   - [Contributing](#contributing)
   - [License](#license)
@@ -155,7 +156,22 @@ ws1cli product
 | --- | --- | --- |
 | `-l` `--lgid` | `int` |LGID of device, mandatory when using `-d` flag |
 | `-s` `--start-stop` | `bool` | Start (true/1) or stop (false/0) a product |
-| `-p` `--product-id` | `int` | Product ID for starting or stopping a product |
+| `-o` `--product-id` | `int` | Product ID for starting or stopping a product |
+
+### Remote
+
+To interact with remote management API:
+
+```bash
+ws1cli remote
+```
+
+| Flag | type |Description |
+| --- | --- | --- |
+| `-d` `--device-uuid` | `string` | Device UUID |
+| `-s` `--session-type` | `string` | type of session to be created `ScreenShare`, `FileManager`, `RemoteShell`, `RegistryEditor` |
+
+The command return a JSON with an URL to open in a browser to start the session.
 
 ## Tips
 
