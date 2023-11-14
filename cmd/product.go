@@ -6,7 +6,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 // productCmd represents the product command
 var productCmd = &cobra.Command{
 	Use:   "product",
@@ -36,7 +35,7 @@ var productCmd = &cobra.Command{
 
 func init() {
 	productCmd.Flags().IntVarP(&lgid, "lgid", "l", 0, "Location Group ID is mandatory for retrieving inventory")
-	productCmd.Flags().IntVarP(&productID, "product-id", "p", 0, "Product ID for starting or stopping a product")
+	productCmd.Flags().IntVarP(&productID, "product-id", "o", 0, "Product ID for starting or stopping a product")
 	productCmd.Flags().BoolVarP(&startStopProduct, "start-stop", "s", false, "Flag to start (true/1) or stop (false/0) a product")
 	rootCmd.AddCommand(productCmd)
 }
