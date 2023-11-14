@@ -41,7 +41,7 @@ Each output will be in JSON format. You can use `jq` to parse the output.
 
 ## TODO
 
-- [ ] Device Management: Perform devices operations.
+- Device Management: Perform devices operations.
   - [x] Get a list of devices.
   - [ ] Search a specific device.
   - [ ] Send command to a device.
@@ -50,17 +50,19 @@ Each output will be in JSON format. You can use `jq` to parse the output.
   - [ ] Unlock a device.
   - [ ] Reboot a device (will depend if the OS allows it).
   - [ ] Wipe a device.
-- [ ] Product List Interaction: Manage and list products within your Workspace ONE environment.
+- Product List Interaction: Manage and list products within your Workspace ONE environment.
   - [x] Get a list of products.
   - [x] Start or stop a product.
   - [ ] Force Reprocess a product.
   - [ ] List devices assigned to a product and their status (will requiered several API call).
-- [ ] Fetch Tag.
+- Fetch Tag.
   - [ ] Get a list of tags.
   - [ ] Get a list of devices per tag.
   - [ ] Create a tag.
   - [ ] Delete a tag.
-- [ ] Comprehensive Reporting: Generate reports on user access, device compliance, and application usage.
+- Remote Session
+  - [x] Generate an URL to start a remote session.
+- Comprehensive Reporting: Generate reports on user access, device compliance, and application usage.
 
 ## Installation
 
