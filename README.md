@@ -21,7 +21,7 @@ The output is provided in JSON format, which can be parsed using tools like `jq`
   - [TODO](#todo)
   - [Installation](#installation)
   - [Configuration](#configuration)
-  - [Environement Variables](#environement-variables)
+    - [Environement Variables](#environement-variables)
   - [Commands](#commands)
     - [Version](#version)
     - [Test](#test)
@@ -95,7 +95,7 @@ You'll be prompted to enter your API URL, username, and password.
 This will create a `~/.ws1cli` file in your home directory with your encrypted API credentials.
 Your credentials and `aw-tenant-code` will be encrypted using AES-256-GCM with a passphrase you provide as an environment variable (see below).
 
-## Environement Variables
+### Environement Variables
 
 `ws1cli` need the following environment variables:
 
