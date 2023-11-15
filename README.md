@@ -1,14 +1,17 @@
 # WS1CLI
 
-![GitHub release](https://img.shields.io/github/release/geekxflood/WS1CLI.svg)[![Go Report Card](https://goreportcard.com/badge/github.com/geekxflood/WS1CLI)](https://goreportcard.com/report/github.com/geekxflood/WS1CLI)[![GoDoc](https://godoc.org/github.com/geekxflood/WS1CLI?status.svg)](https://godoc.org/github.com/geekxflood/WS1CLI)[![License](https://img.shields.io/github/license/geekxflood/WS1CLI)](https://github.com/geekxflood/ws1cli/blob/main/LICENSE)
+![GitHub release](https://img.shields.io/github/release/geekxflood/WS1CLI.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/geekxflood/WS1CLI)](https://goreportcard.com/report/github.com/geekxflood/WS1CLI)
+[![GoDoc](https://godoc.org/github.com/geekxflood/WS1CLI?status.svg)](https://godoc.org/github.com/geekxflood/WS1CLI)
+[![License](https://img.shields.io/github/license/geekxflood/WS1CLI)](https://github.com/geekxflood/ws1cli/blob/main/LICENSE)
 
-**DISCLAIMER**: This is project is not affiliate with VMware or parent / children subsidiaries. Any issues with this tools must be reported on the GitHub repository issue tracker and not on VMware support platform or VMware community forum. These medium will not be checked for issues.
+**DISCLAIMER**: This project is not affiliated with VMware or its parent/subsidiary companies. Any issues with this tool must be reported on the GitHub repository issue tracker and not VMware's support platforms or community forums.
 
-`ws1cli` is a command-line interface (CLI) tool built in Go and leveraging the Cobra library, designed for interacting with VMware Workspace ONE UEM API. It enables administrators to manage and automate tasks within the Workspace ONE platform efficiently.
+`ws1cli` is a command-line interface (CLI) tool built with Go, leveraging the Cobra library to interact with VMware Workspace ONE UEM API. It streamlines the management and automation of tasks for administrators within the Workspace ONE platform.
 
-To keep the project simple, each command will be related to 1 API call. We will try to keep that way so that it's easy to maintain and to add new commands. If you need to chain command, you will parse the output of the first command and use it as input for the second command.
+This project aims for simplicity, with each command corresponding to a single API call. We strive to maintain this simplicity for ease of maintenance and extension. If you need to chain commands, parse the output from one command and input it into another.
 
-Each output will be in JSON format. You can use `jq` to parse the output.
+The output is provided in JSON format, which can be parsed using tools like `jq`.
 
 ## Table of Contents
 
