@@ -1,5 +1,9 @@
 # WS1CLI
 
+![GitHub release](https://img.shields.io/github/release/geekxflood/WS1CLI.svg)[![Go Report Card](https://goreportcard.com/badge/github.com/geekxflood/WS1CLI)](https://goreportcard.com/report/github.com/geekxflood/WS1CLI)[![GoDoc](https://godoc.org/github.com/geekxflood/WS1CLI?status.svg)](https://godoc.org/github.com/geekxflood/WS1CLI)[![License](https://img.shields.io/github/license/geekxflood/WS1CLI)](https://github.com/geekxflood/ws1cli/blob/main/LICENSE)
+
+**DISCLAIMER**: This is project is not affiliate with VMware or parent / children subsidiaries. Any issues with this tools must be reported on the GitHub repository issue tracker and not on VMware support platform or VMware community forum. These medium will not be checked for issues.
+
 `ws1cli` is a command-line interface (CLI) tool built in Go and leveraging the Cobra library, designed for interacting with VMware Workspace ONE UEM API. It enables administrators to manage and automate tasks within the Workspace ONE platform efficiently.
 
 To keep the project simple, each command will be related to 1 API call. We will try to keep that way so that it's easy to maintain and to add new commands. If you need to chain command, you will parse the output of the first command and use it as input for the second command.
@@ -35,9 +39,8 @@ Each output will be in JSON format. You can use `jq` to parse the output.
   - `version`: Display the version of `ws1cli`.
   - `test`: Verify configuration and connectivity to the API.
   - `device`: Interact with device API.
-    - `-d` or `--inventory`: Output an array of JSON of devices in LGID (`-l`, `--lgid` *mandatory* with it).
   - `product`: Interact with product provisionning API
-    - `-l` or `--lgid`: **mandatory** LGID of products
+  - `remote`: Generate remote control URL
 
 ## TODO
 
@@ -45,6 +48,7 @@ Each output will be in JSON format. You can use `jq` to parse the output.
   - [x] Get a list of devices.
   - [ ] Search a specific device.
   - [ ] Send command to a device.
+  - [x] Send command to a list of devices.
   - [ ] Send a message to a device.
   - [ ] Lock a device.
   - [ ] Unlock a device.
@@ -145,6 +149,9 @@ ws1cli device
 | --- | --- | --- |
 | `-d` `--inventory` | `N/A` | Output an array of JSON of devices in LGID |
 | `-l` `--lgid` | `int` | LGID of device, mandatory when using `-d` flag |
+| `-c` `--command` | `string` | Command to send, command accepted: `EnterpriseWipe`, `LockDevice`, `ScheduleOsUpdate`, `SoftReset`, `Shutdown`, |
+| `-f` `--filter` | `string` | Filter to apply to the device list (for `command` flag) Value accepted: `Macaddress`, `Udid`, `Serialnumber`, `ImeiNumber` |
+| `-inputJson` | `string` | JSON input for the command to send, it can be the output of the `--inventory` |
 
 ### Products
 
@@ -182,8 +189,28 @@ JSON output can be parse using `jq`:
 Find the number of devices in LGID:
 
 ```bash
-./ws1cli device --inventory -l $LGID | jq 'length'
+./ws1cli device --inventory --lgid $LGID | jq 'length'
 ```
+
+Execute a batch command to a list of devices in a specific LGID:
+
+```bash
+ws1cli --command "SoftReset" --filter "Serialnumber" --inputJson $(ws1cli --inventory --lgid $LGID)
+```
+
+In this example the LGID is 500, the command is `SoftReset` and the filter is `Serialnumber`.
+
+Same command but on devices from a large LGID:
+
+```bash
+ws1cli --inventory --lgid $LGID > devices.json
+ws1cli --command "SoftReset" --filter "Serialnumber" --inputJson "$(cat devices.json)"
+```
+
+In this example, we use a file to store the output of the first command and use it as input for the second command.
+So that we are sure that we have all the devices in the LGID since the first command can take some time to finish
+
+Not all command are supported by all platform, you can check the API documentation for more information.
 
 ## Contributing
 
@@ -191,7 +218,7 @@ Contributions are welcome. Fork the project, make your updates, and submit a pul
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Support
 

@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -78,5 +79,59 @@ func GetDeviceInventory(lgid int) error {
 
 	fmt.Println(string(jsonData))
 
+	return nil
+}
+
+// RunCommandOnDevices runs a command on a list of devices
+func RunCommandOnDevices(command string, devicesFiltered []string, valueFilter string) error {
+	config, err := GetConfig()
+	if err != nil {
+		return err
+	}
+
+	apiEndpoint := fmt.Sprintf("%s%s/mdm/devices/commands/bulk?command=%s&searchby=%s",
+		config.APIURL, config.APIPath, command, valueFilter)
+
+	payload := map[string]interface{}{
+		"BulkValues": map[string][]string{
+			"Value": devicesFiltered,
+		},
+	}
+
+	jsonData, err := json.Marshal(payload)
+	if err != nil {
+		return fmt.Errorf("error marshalling payload: %v", err)
+	}
+
+	req, err := http.NewRequest("POST", apiEndpoint, bytes.NewBuffer(jsonData))
+	if err != nil {
+		return err
+	}
+
+	req.Header.Add("Accept", "application/json")
+	req.Header.Add("Content-Type", "application/json")
+	req.Header.Add("Authorization", "Basic "+config.DecryptedAPIAuth)
+	req.Header.Add("aw-tenant-code", config.DecryptedAPISecret)
+
+	resp, err := HttpCaller(req)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	// Construct the response JSON
+	responseJSON := map[string]interface{}{
+		"command":      command,
+		"devicefilter": map[string][]string{valueFilter: devicesFiltered},
+		"response":     resp.StatusCode,
+	}
+
+	// Marshal the response JSON
+	responseData, err := json.Marshal(responseJSON)
+	if err != nil {
+		return fmt.Errorf("error marshalling response JSON: %v", err)
+	}
+
+	fmt.Println(string(responseData))
 	return nil
 }

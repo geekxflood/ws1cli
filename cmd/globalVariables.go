@@ -11,6 +11,9 @@ var showDetails bool
 
 var lgid int
 var inventory bool
+var command string
+var inputJson string
+var valueFilter string
 
 var productID int
 var startStopProduct bool
@@ -23,4 +26,19 @@ var sessionTypes = []string{
 	"FileManager",
 	"RemoteShell",
 	"RegistryEditor",
+}
+
+var commandTypes = []string{
+	"EnterpriseWipe",
+	"LockDevice",
+	"ScheduleOsUpdate",
+	"SoftReset",
+	"Shutdown",
+}
+
+var valueFilterTypes = []string{
+	"Macaddress",
+	"Udid",
+	"Serialnumber",
+	"ImeiNumber",
 }

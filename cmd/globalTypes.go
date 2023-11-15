@@ -2,6 +2,7 @@
 
 package cmd
 
+
 type Config struct {
 	APIURL             string `yaml:"apiurl"`
 	APIAuth            string `yaml:"apiusername"`

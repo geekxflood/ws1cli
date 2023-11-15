@@ -3,10 +3,13 @@ package cmd
 
 import (
 	"crypto/tls"
+	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"reflect"
 
 	"gopkg.in/yaml.v2"
 )
@@ -42,6 +45,15 @@ func HttpCaller(req *http.Request) (*http.Response, error) {
 	}
 
 	return resp, nil
+}
+
+func stringInSlice(str string, list []string) bool {
+	for _, v := range list {
+		if v == str {
+			return true
+		}
+	}
+	return false
 }
 
 // GetConfig retrieves and decrypts the configuration from the config file
@@ -89,4 +101,50 @@ func readYamlFile(c *Config, path string) error {
 	c.DecryptedAPISecret = string(decryptedSecret)
 
 	return nil
+}
+
+// FilterDevices takes a JSON string of an array of DeviceDefinition and filters it by the valueFilter field.
+func FilterDevices(devicesJSON string, valueFilter string) ([]string, error) {
+	// Unmarshal the JSON string into a slice of DeviceDefinition
+	var deviceDefinitions []DeviceDefinition
+	err := json.Unmarshal([]byte(devicesJSON), &deviceDefinitions)
+	if err != nil {
+		return nil, fmt.Errorf("error unmarshalling devices: %v", err)
+	}
+
+	// Use reflection to loop over the fields of the struct and match the JSON tag.
+	var filteredValues []string
+	for _, device := range deviceDefinitions {
+		val := reflect.ValueOf(device)
+		typ := val.Type()
+
+		for i := 0; i < val.NumField(); i++ {
+			field := typ.Field(i)
+			tag := field.Tag.Get("json")
+
+			// If the tag matches the valueFilter, extract the value
+			if tag == valueFilter {
+				// Handle nested structs recursively if necessary.
+				if field.Type.Kind() == reflect.Struct {
+					nestedVal := val.Field(i)
+					for j := 0; j < nestedVal.NumField(); j++ {
+						nestedField := nestedVal.Type().Field(j)
+						nestedTag := nestedField.Tag.Get("json")
+						if nestedTag == valueFilter {
+							filteredValues = append(filteredValues, fmt.Sprint(nestedVal.Field(j).Interface()))
+						}
+					}
+				} else {
+					filteredValues = append(filteredValues, fmt.Sprint(val.Field(i).Interface()))
+				}
+				break // Stop searching fields if we've found a match.
+			}
+		}
+	}
+
+	if len(filteredValues) == 0 {
+		return nil, errors.New("no matching field found for the value filter provided")
+	}
+
+	return filteredValues, nil
 }
