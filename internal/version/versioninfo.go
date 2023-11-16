@@ -2,5 +2,5 @@
 
 package version
 
-// Version of the program set during build.
+// Version is the current version of the program, set during the build.
 var Version = "development"

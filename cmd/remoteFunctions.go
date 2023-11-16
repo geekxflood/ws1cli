@@ -1,3 +1,5 @@
+// cmd/remoteFunctions.go
+
 package cmd
 
 import (
@@ -8,6 +10,7 @@ import (
 	"net/http"
 )
 
+// GetRemoteSession retrieves a remote session URL for a specified device and session type.
 func GetRemoteSession(deviceUuid string, sessionType string) error {
 	config, err := GetConfig()
 	if err != nil {

@@ -14,7 +14,7 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-// CreateHTTPClient creates a new HTTP client based on the insecure flag.
+// CreateHTTPClient creates a new HTTP client, optionally skipping TLS verification.
 func CreateHTTPClient() *http.Client {
 	httpClient := &http.Client{}
 
@@ -29,7 +29,7 @@ func CreateHTTPClient() *http.Client {
 	return httpClient
 }
 
-// HttpCaller makes an HTTP call to the specified API endpoint
+// HttpCaller makes an HTTP call to the specified API endpoint.
 func HttpCaller(req *http.Request) (*http.Response, error) {
 	httpClient := CreateHTTPClient()
 
@@ -47,6 +47,7 @@ func HttpCaller(req *http.Request) (*http.Response, error) {
 	return resp, nil
 }
 
+// stringInSlice checks if a string is present in a slice.
 func stringInSlice(str string, list []string) bool {
 	for _, v := range list {
 		if v == str {
@@ -56,7 +57,7 @@ func stringInSlice(str string, list []string) bool {
 	return false
 }
 
-// GetConfig retrieves and decrypts the configuration from the config file
+// GetConfig retrieves and decrypts the configuration.
 func GetConfig() (*Config, error) {
 	var c Config
 	err := readConfig(&c)
@@ -66,7 +67,7 @@ func GetConfig() (*Config, error) {
 	return &c, nil
 }
 
-// readConfig reads the configuration file and fills the Config struct
+// readConfig reads the configuration file.
 func readConfig(c *Config) error {
 	homeDir, err := os.UserHomeDir()
 	if err != nil {
@@ -76,7 +77,7 @@ func readConfig(c *Config) error {
 	return readYamlFile(c, configPath)
 }
 
-// readYamlFile reads and decodes the YAML configuration file
+// readYamlFile reads and decodes the YAML configuration file.
 func readYamlFile(c *Config, path string) error {
 	yfile, err := os.ReadFile(path)
 	if err != nil {
@@ -103,7 +104,7 @@ func readYamlFile(c *Config, path string) error {
 	return nil
 }
 
-// FilterDevices takes a JSON string of an array of DeviceDefinition and filters it by the valueFilter field.
+// FilterDevices filters a JSON string of an array of DeviceDefinition.
 func FilterDevices(devicesJSON string, valueFilter string) ([]string, error) {
 	// Unmarshal the JSON string into a slice of DeviceDefinition
 	var deviceDefinitions []DeviceDefinition

@@ -9,7 +9,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// versionCmd represents the version command
+// versionCmd represents the 'version' command for printing the ws1cli version.
 var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "Print the version number of WS1CLI",

@@ -9,7 +9,7 @@ import (
 	"net/http"
 )
 
-// GetProductInventory retrieves the inventory of products
+// GetProductInventory retrieves the inventory of products.
 func GetProductInventory() error {
 	var jsonData []byte
 	config, err := GetConfig()
@@ -79,7 +79,7 @@ func GetProductInventory() error {
 	return nil
 }
 
-// StartStopProduct starts or stops a product
+// StartStopProduct starts or stops a product based on the provided ID and flag.
 func StartStopProduct(productID int, startStopProduct bool) error {
 	var jsonData []byte
 	var apiEndpoint string

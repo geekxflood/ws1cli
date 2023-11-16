@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-// TestWS1 tests the configuration to your Workspace ONE UEM environment by making a call to the API.
+// TestWS1 tests the configuration to Workspace ONE UEM.
 func TestWS1() error {
 	// Retrieve the configuration
 	config, err := GetConfig()

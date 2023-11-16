@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// testCmd represents the test command
+// testCmd represents the 'test' command for testing the configuration.
 var testCmd = &cobra.Command{
 	Use:   "test",
 	Short: "Test the configuration to your Workspace ONE UEM environment",

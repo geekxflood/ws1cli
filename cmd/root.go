@@ -8,15 +8,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// rootCmd represents the base command when called without any subcommands
+// rootCmd is the base command for ws1cli, used when no subcommands are called.
 var rootCmd = &cobra.Command{
 	Use:   "ws1cli",
 	Short: "CLI to interact with VMware Workspace ONE UEM API",
 	Long:  `Command line interface to interact with VMware Workspace ONE UEM API.`,
 }
 
-// Execute adds all child commands to the root command and sets flags appropriately.
-// This is called by main.main(). It only needs to happen once to the rootCmd.
+// Execute adds all child commands to the root command.
 func Execute() {
 	err := rootCmd.Execute()
 	if err != nil {
@@ -30,5 +29,4 @@ func init() {
 	// Persistent flag available to all subcommands
 	rootCmd.PersistentFlags().BoolVarP(&insecure, "insecure", "i", false, "Ignore TLS verification")
 	rootCmd.PersistentFlags().BoolVarP(&prettyPrint, "pretty", "p", false, "Pretty-print JSON output")
-
 }

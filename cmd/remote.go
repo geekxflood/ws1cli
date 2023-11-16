@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// remoteCmd represents the remote command
+// remoteCmd represents the 'remote' command for initiating remote management sessions.
 var remoteCmd = &cobra.Command{
 	Use:   "remote",
 	Short: "Interact with remote mangement by Workspace ONE UEM",

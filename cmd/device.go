@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// deviceCmd represents the device command
+// deviceCmd represents the 'device' command.
 var deviceCmd = &cobra.Command{
 	Use:   "device",
 	Short: "Interact with the devices managed by Workspace ONE UEM",

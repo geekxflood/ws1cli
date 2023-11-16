@@ -13,6 +13,7 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+// ensureConfig ensures the existence of a configuration file.
 func ensureConfig() error {
 	if forceRecreate {
 		return nil // Skip the check and proceed to recreate the config file
@@ -30,6 +31,7 @@ func ensureConfig() error {
 	return nil
 }
 
+// userWantsToCreateConfig prompts the user to decide on creating a new config file.
 func userWantsToCreateConfig() bool {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Println("Would you like to create a new configuration file? (Y/n)")
@@ -39,6 +41,7 @@ func userWantsToCreateConfig() bool {
 	return response == "" || strings.ToLower(response) == "y"
 }
 
+// createConfigFile guides the user through creating a new configuration file.
 func createConfigFile() error {
 	var c Config
 	reader := bufio.NewReader(os.Stdin)

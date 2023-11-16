@@ -7,12 +7,12 @@ import (
 	"time"
 )
 
-// CustomTime allows parsing of the non-standard time formats used by the API.
+// CustomTime is a custom type to handle non-standard time formats used by the API.
 type CustomTime struct {
 	time.Time
 }
 
-// UnmarshalJSON parses the non-standard time format from the API into a CustomTime.
+// UnmarshalJSON parses non-standard time formats into CustomTime.
 func (ct *CustomTime) UnmarshalJSON(b []byte) (err error) {
 	s := string(b)
 
@@ -31,7 +31,7 @@ func (ct *CustomTime) UnmarshalJSON(b []byte) (err error) {
 	return nil
 }
 
-// MarshalJSON writes the time in the custom format for the API.
+// MarshalJSON writes the time in a custom format for the API.
 func (ct *CustomTime) MarshalJSON() ([]byte, error) {
 	if ct.Time.IsZero() {
 		return []byte("null"), nil

@@ -1,5 +1,7 @@
 // cmd/cryptoFunctions.go
 
+// Package cmd provides the command line commands for the ws1cli application.
+// This file contains functions related to cryptographic operations such as encryption and decryption.
 package cmd
 
 import (
@@ -13,7 +15,7 @@ import (
 	"os"
 )
 
-// Helper function to hash the passphrase to a 32-byte key using SHA-256
+// hashTo32Bytes is a helper function to hash the passphrase to a 32-byte key using SHA-256.
 func hashTo32Bytes(input string) []byte {
 	hasher := sha256.New()
 	hasher.Write([]byte(input))
@@ -43,7 +45,7 @@ func Encrypt(data []byte) (string, error) {
 	return base64.StdEncoding.EncodeToString(encrypted), nil
 }
 
-// DecryptValues is a helper function that decrypts a base64-encoded string
+// DecryptValues is a helper function that decrypts a base64-encoded string.
 func DecryptValues(encryptedBase64Value string) (string, error) {
 	if encryptedBase64Value == "" {
 		return "", nil // If the value is empty, return an empty string without error

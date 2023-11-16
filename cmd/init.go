@@ -9,8 +9,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
-// initCmd represents the init command
+// initCmd represents the 'init' command for initializing the CLI.
 var initCmd = &cobra.Command{
 	Use:   "init",
 	Short: "Initialize the CLI",

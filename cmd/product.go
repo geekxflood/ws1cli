@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// productCmd represents the product command
+// productCmd represents the 'product' command for Workspace ONE UEM products.
 var productCmd = &cobra.Command{
 	Use:   "product",
 	Short: "Interact with products managed by Workspace ONE UEM",

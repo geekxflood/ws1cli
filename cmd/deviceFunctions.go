@@ -10,7 +10,7 @@ import (
 	"net/http"
 )
 
-// GetDeviceInventory retrieves the inventory of devices based on the provided LGID.
+// GetDeviceInventory retrieves the inventory of devices based on the LGID.
 func GetDeviceInventory(lgid int) error {
 	var jsonData []byte
 	config, err := GetConfig()
@@ -82,7 +82,7 @@ func GetDeviceInventory(lgid int) error {
 	return nil
 }
 
-// RunCommandOnDevices runs a command on a list of devices
+// RunCommandOnDevices runs a specified command on a list of filtered devices.
 func RunCommandOnDevices(command string, devicesFiltered []string, valueFilter string) error {
 	config, err := GetConfig()
 	if err != nil {
